@@ -60,9 +60,6 @@ export default {
      */
     extend(config, ctx) {}
   },
-  router: {
-    base: '/nuxt-test/'
-  },
   generate: {
     routes() {
       return axios.get('https://service.mockapi.me/api/sinanyaman/list-posts')
