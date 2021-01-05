@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Slug</h2>
-    <p>{{ title }}</p>
+    <h2>{{ title }}</h2>
+    <p>{{ body }}</p>
   </div>
 </template>
 <script>
@@ -14,9 +14,9 @@ export default {
   },
   asyncData({ params, error }) {
     return axios
-      .get(`https://service.mockapi.me/api/sinanyaman/${params.slug}`)
+      .get(`https://jsonplaceholder.typicode.com/posts/${params.slug}`)
       .then(res => {
-        return { title: res.data.data };
+        return { title: res.data.title, body: res.data.body };
       })
       .catch(() => {
         error({ statusCode: 404, message: "Post not found" });

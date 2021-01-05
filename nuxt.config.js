@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+  target: 'static',
   mode: 'universal',
   /*
    ** Headers of the page
@@ -62,12 +63,14 @@ export default {
   },
   generate: {
     routes() {
-      return axios.get('https://service.mockapi.me/api/sinanyaman/list-posts')
+      return axios
+        .get("https://jsonplaceholder.typicode.com/posts")
         .then((res) => {
           return res.data.map((post) => {
-            return '/blog/' + post.slug
-          })
-        })
+            console.log(post);
+            return "/blog/" + post.id;
+          });
+        });
     }
   }
 }
